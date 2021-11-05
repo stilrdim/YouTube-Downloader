@@ -1,7 +1,7 @@
 import datetime
 import os
 from time import sleep
-from pytube import YouTube, Playlist, request, Search
+from pytube import YouTube, Playlist, Search
 
 DW_FOLDER = os.getcwd() + r"\downloads"
 
