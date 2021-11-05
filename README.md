@@ -19,7 +19,7 @@ Use `download_playlist` to download a playlist passing in your own playlist obje
 
 
 `file_extension: String`
-  File extension you'd like
+  File extension to use
   >Default: ".mp3"
   
 `file_prefix: Bool`
