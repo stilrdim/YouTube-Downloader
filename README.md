@@ -1,6 +1,7 @@
 # YouTube-Downloader
-Download youtube playlists or lists of songs/videos using `pytube`
+#### Download youtube playlists or lists of songs/videos using `pytube`
 
+## Classes `Audio` and `Video` have the same methods
 
 Use `download_all` to download from your own list of items using the pytube **Search** function
 ```py
@@ -9,7 +10,7 @@ file_name = 'songs.txt'
 with open(file_name, 'r+') as f:
    songs = f.readlines()
 
-download_all(songs)
+Audio.download_all(songs)
 ```
   
 Use `download_playlist` to download a playlist passing in your own playlist object
