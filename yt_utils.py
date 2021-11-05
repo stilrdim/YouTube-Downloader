@@ -109,7 +109,7 @@ class Audio:
         except AttributeError:
             song.streams.filter(only_audio=True).first().download(
                 output_path=DW_FOLDER + new_folder,
-                filename=song.title + new_folder,)
+                filename=song.title + file_extension,)
         finished(song.title)
 
 
@@ -217,7 +217,7 @@ class Video:
         except AttributeError:
             video.streams.filter(only_video=True).first().download(
                 output_path=DW_FOLDER + new_folder,
-                filename=video.title + new_folder,)
+                filename=video.title + file_extension,)
         finished(video.title)
 
 
