@@ -1,8 +1,8 @@
-from yt_utils import download_all
+from yt_utils import Audio, Video
 
 file_name = 'songs.txt'
 
 with open(file_name, 'r+') as f:
     songs = f.readlines()
 
-download_all(songs=songs, new_folder=r"\test")
+Audio.download_all(songs=songs, new_folder=r"\test6")
