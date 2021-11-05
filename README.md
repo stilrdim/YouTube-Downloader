@@ -33,6 +33,7 @@ Use `download_playlist` to download a playlist passing in your own playlist obje
 `new_folder: String`
   If you'd like to make a new folder, type it here in a raw string
   >Default: ""
+  ```Example: r"\new_folder"```
 
 `prefix: Int`
   Prefix for the downloaded file
