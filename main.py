@@ -24,8 +24,8 @@ print("""
 | to avoid retyping them every time                     |
 | or use SETUP as any of the inputs                     |
 |                                                       |
-| Examples:    n      a     o   360p                    |
-|            Names  Audio  One  360p                    |
+| Examples:    n      a     o   360p   sub_folder       |
+|            Names  Audio  One  360p   Sub folder       |
 |                                                       |
 |                                                       |
 |                                   Copyright Stil 2021 |
