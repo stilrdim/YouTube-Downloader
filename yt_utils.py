@@ -60,11 +60,11 @@ class Audio:
                         output_path=DW_FOLDER + new_folder,
                         filename=song_name + file_extension,
                         filename_prefix="%s. " % prefix,)
-                elif file_prefix is False:  # Don't add prefix to songs
+                elif file_prefix is False:
                     s.streams.get_by_itag(itag).download(
                         output_path=DW_FOLDER + new_folder,
                         filename=song_name + file_extension,)
-            except AttributeError:  # Resolution not found
+            except AttributeError:
                 if file_prefix is True:
                     s.streams.filter(only_audio=True).first().download(
                         output_path=DW_FOLDER + new_folder,
@@ -76,9 +76,9 @@ class Audio:
                         filename=song_name + file_extension,)
                 resolution_not_found()
 
-            s.register_on_complete_callback(finished(song_name, prefix))  # Log in console on completion
-            prefix += 1  # Increment the prefix number
-            sleep(sleep_time)  # Avoid getting in trouble with YouTube
+            s.register_on_complete_callback(finished(song_name, prefix))
+            prefix += 1
+            sleep(sleep_time)
 
     @staticmethod
     def download_from_url(song_url, file_extension=".mp3", resolution="360p", new_folder=""):
@@ -123,7 +123,7 @@ class Video:
         playlist = Playlist(playlist_url)
         itag = choose_resolution(resolution)
 
-        print(f'[{timestamp}] Downloading:\n{playlist.title}\n')  # Announce starting the downloads
+        print(f'[{timestamp}] Downloading:\n{playlist.title}\n')
 
         for video in playlist.videos:
             try:
@@ -132,11 +132,11 @@ class Video:
                         output_path=DW_FOLDER + new_folder,
                         filename=video.title + file_extension,
                         filename_prefix="%s. " % prefix,)
-                elif file_prefix is False:  # Don't add prefix to videos
+                elif file_prefix is False:
                     video.streams.get_by_itag(itag).download(
                         output_path=DW_FOLDER + new_folder,
                         filename=video.title + file_extension,)
-            except AttributeError:  # Resolution not found
+            except AttributeError:
                 if file_prefix is True:
                     video.streams.filter(only_video=True).first().download(
                         output_path=DW_FOLDER + new_folder,
@@ -148,9 +148,9 @@ class Video:
                         filename=video.title + file_extension,)
                 resolution_not_found()
 
-            video.register_on_complete_callback(finished(video.title, prefix))  # Log in console on completion
-            prefix += 1  # Increment the prefix number
-            sleep(sleep_time)  # Avoid getting in trouble with YouTube
+            video.register_on_complete_callback(finished(video.title, prefix))
+            prefix += 1
+            sleep(sleep_time)
 
     @staticmethod
     def download_all(videos, file_extension=".mp4", file_prefix=True,
@@ -160,7 +160,7 @@ class Video:
 
         for video in videos:
             video_name = video.replace('\n', '')
-            s = Search(video_name).results[0]  # Get first result of the search
+            s = Search(video_name).results[0]
 
             try:
                 if file_prefix is True:
@@ -168,11 +168,11 @@ class Video:
                         output_path=DW_FOLDER + new_folder,
                         filename=video_name + file_extension,
                         filename_prefix="%s. " % prefix,)
-                elif file_prefix is False:  # Don't add prefix to videos
+                elif file_prefix is False:
                     s.streams.get_by_itag(itag).download(
                         output_path=DW_FOLDER + new_folder,
                         filename=video_name + file_extension,)
-            except AttributeError:  # Resolution not found
+            except AttributeError:
                 if file_prefix is True:
                     s.streams.filter(only_video=True).first().download(
                         output_path=DW_FOLDER + new_folder,
@@ -184,9 +184,9 @@ class Video:
                         filename=video_name + file_extension,)
                 resolution_not_found()
 
-            s.register_on_complete_callback(finished(video_name, prefix))  # Log in console on completion
-            prefix += 1  # Increment the prefix number
-            sleep(sleep_time)  # Avoid getting in trouble with YouTube
+            s.register_on_complete_callback(finished(video_name, prefix))
+            prefix += 1
+            sleep(sleep_time)
 
     @staticmethod
     def download_from_url(video_url, file_extension=".mp4", resolution="360p", new_folder=""):
@@ -258,6 +258,11 @@ def close_app(message="Thank you for using the app!\nHave a nice day!",
     print(message)
     sleep(sleep_time)
     exit(1)
+
+
+def check_for_stop(string_to_check: str):
+    if string_to_check.lower() == 's' or string_to_check.lower() == 'stop' or string_to_check.lower() == 'exit':
+        close_app()
 
 
 def finished(video_title, iterator=1):
