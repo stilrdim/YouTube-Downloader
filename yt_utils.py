@@ -1,5 +1,6 @@
 import datetime
 import os
+import atexit
 from time import sleep
 from pytube import YouTube, Playlist, Search
 
@@ -367,8 +368,13 @@ def check_for_stop(string_to_check: str):
 
 def check_for_setup(string_to_check: str):
     if string_to_check.lower() == 'setup':  # The user requested a new setup
-        os.remove(SETTINGS_FILE)
-        create_settings(SETTINGS_FILE)
+        try:
+            os.remove(SETTINGS_FILE)
+            create_settings(SETTINGS_FILE)
+        except FileNotFoundError:
+            with open(SETTINGS_FILE, 'x') as f:
+                pass
+            create_settings(SETTINGS_FILE)
 
 
 def close_app(message, sleep_time=3):
@@ -381,3 +387,11 @@ def finished(video_title, iterator=1):
     """ Print information about the file that just finished downloading """
     timestamp = str(datetime.datetime.now()).split(maxsplit=11)[1].split('.')[0]
     print('[%s] %s downloaded!\t[%s]' % (timestamp, video_title, iterator))
+
+
+# On app close (KeyboardInterrupt, etc...)
+@atexit.register
+def goodbye():
+    os.system('cls')
+    print("Thank you for using the app!\nHave a nice day!")
+    sleep(3)

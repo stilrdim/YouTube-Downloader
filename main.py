@@ -68,8 +68,7 @@ except FileNotFoundError:
         print(name_or_url)
 
     # Set up a settings.txt file
-    elif name_or_url == "setup":
-        create_settings(SETTINGS_FILE)
+    check_for_setup(name_or_url)
 
     audio_or_video = input('Would you like to download [A]udio or [V]ideo\n').lower()
     check_for_stop(audio_or_video)
