@@ -224,26 +224,42 @@ class Video:
 def choose_resolution(resolution, audio_only=False):
     resolution = resolution.lower()
     if audio_only:
-        if resolution in ["low", "360", "360p"]:
+        if resolution in ["min", "144", "144p"]:
+            i_tag = 249  # TODO: research i_tags for audio
+        elif resolution in ["very low", "240", "240p"]:
             i_tag = 249
-        elif resolution in ["medium", "720", "720p"]:
+        elif resolution in ["low", "360", "360p"]:
+            i_tag = 249
+        elif resolution in ["medium", "480", "480p"]:
+            i_tag = 249
+        elif resolution in ["high", "720", "720p"]:
             i_tag = 250
-        elif resolution in ["high", "1080", "1080p"]:
+        elif resolution in ["very high", "1080", "1080p"]:
             i_tag = 251
-        elif resolution in ["very high", "2160", "2160p", "4k"]:
+        elif resolution in ["ultra high", "1440", "1440p"]:
+            i_tag = 251
+        elif resolution in ["max", "2160", "2160p", "4k"]:
             i_tag = 251
         else:
             i_tag = 140
 
     elif audio_only is False:
-        if resolution in ["low", "360", "360p"]:
-            i_tag = 18
-        elif resolution in ["medium", "720", "720p"]:
-            i_tag = 22
-        elif resolution in ["high", "1080", "1080p"]:
-            i_tag = 137
-        elif resolution in ["very high", "2160", "2160p", "4k"]:
-            i_tag = 313
+        if resolution in ["min", "144", "144p"]:
+            i_tag = 160  # 278 webm_30fps, 330 webm_60fps
+        elif resolution in ["very low", "240", "240p"]:
+            i_tag = 133  # 242 webm_30fps, 331 webm_60fps
+        elif resolution in ["low", "360", "360p"]:
+            i_tag = 134  # 243 webm_30fps, 134 mp4, 18 previous value
+        elif resolution in ["medium", "480", "480p"]:
+            i_tag = 135  # 244 webm_30fps, 333 webm_60fps
+        elif resolution in ["high", "720", "720p"]:
+            i_tag = 22  # 136 mp4_30fps, 298 mp4_60fps
+        elif resolution in ["very high", "1080", "1080p"]:
+            i_tag = 137  # 248 webm_30fps, 299 mp4_60fps, 303 webm_60fps, 335 webm_60fps
+        elif resolution in ["ultra high", "1440", "1440p"]:
+            i_tag = 271  # 308 webm_60fps, 336 webm_60fps
+        elif resolution in ["max", "2160", "2160p", "4k"]:
+            i_tag = 313  # 315 webm_60fps, 337 webm_60fps
         else:
             i_tag = 18
     return i_tag
