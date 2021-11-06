@@ -9,15 +9,12 @@ print("""
 | Type 'STOP' or 'S' to exit at any time.               |
 | These inputs will NOT be case-sensitive.              |
 |                                                       |
-|                                                       |
 | [Names, Multiple] setting will require input          |
 | with the name of a .txt file with songs separated     |
 | by a new line                                         |
 |                                                       |
 | [URL, Multiple] setting will require a YT playlist    |
 | or a file with URLs separated by a new line           |
-|                                                       |
-|                                                       |
 |                                                       |
 | You can create a settings.txt file with each setting  |
 | on a new line to avoid retyping them every time       |
