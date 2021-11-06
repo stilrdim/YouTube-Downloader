@@ -66,21 +66,21 @@ except FileNotFoundError:
     if name_or_url == '':
         name_or_url = 'n'  # Default setting
         print(name_or_url)
-
-    # Set up a settings.txt file
-    check_for_setup(name_or_url)
+    check_for_setup(name_or_url)  # Check if setup was requested
 
     audio_or_video = input('Would you like to download [A]udio or [V]ideo\n').lower()
     check_for_stop(audio_or_video)
     if audio_or_video == '':
         audio_or_video = 'a'  # Default setting
         print(audio_or_video)
+    check_for_setup(audio_or_video)
 
     one_or_multiple = input("Would you like to download [O]ne or [M]ultiple files\n").lower()
     check_for_stop(one_or_multiple)
     if one_or_multiple == '':
         one_or_multiple = 'o'  # Default setting
         print(one_or_multiple)
+    check_for_setup(one_or_multiple)
 
     # Default settings
     resolution = "360p"

@@ -394,4 +394,4 @@ def finished(video_title, iterator=1):
 def goodbye():
     os.system('cls')
     print("Thank you for using the app!\nHave a nice day!")
-    sleep(3)
+    sleep(2)
