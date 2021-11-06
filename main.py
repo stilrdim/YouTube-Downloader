@@ -54,7 +54,11 @@ try:
         sub_folder = settings[4]
     # Delay in seconds
     if one_or_multiple == 'm':
-        delay = int(settings[5])            # 6
+        try:
+            delay = int(settings[5])            # 6
+        except IndexError:  # Delay not set (Only occurs when manually creating settings.txt)
+            settings.append('2')
+            delay = int(settings[5])
     else:
         delay = 2
     print('Current settings:\n%s\n' % settings)
