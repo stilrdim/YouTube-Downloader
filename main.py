@@ -1,4 +1,4 @@
-from yt_utils import Audio, Video, create_settings, check_for_stop, check_for_setup, SETTINGS_FILE
+from yt_utils import Audio, Video, check_for_stop, check_for_setup, SETTINGS_FILE
 
 print("""
  ________________________________________________________
@@ -8,6 +8,7 @@ print("""
 | Example: [A]udio   =>   A                             |
 | Type 'STOP' or 'S' to exit at any time.               |
 | These inputs will NOT be case-sensitive.              |
+|                                                       |
 |                                                       |
 | [Names, Multiple] setting will require input          |
 | with the name of a .txt file with songs separated     |
@@ -21,7 +22,7 @@ print("""
 | You can create a settings.txt file                    |
 | with each setting on a new line                       |
 | to avoid retyping them every time                     |
-| or use SETUP as first input                           |
+| or use SETUP as any of the inputs                     |
 |                                                       |
 | Examples:    n      a     o   360p                    |
 |            Names  Audio  One  360p                    |
@@ -60,7 +61,7 @@ try:
 
 # Settings file not found
 except FileNotFoundError:
-    name_or_url = input("If it's your first time using the app, you can use SETUP to get a settings.txt file"
+    name_or_url = input("If you use the app often, you can use SETUP to get a settings.txt file"
                         "\n\nWould you like to download using a [N]ame or [U]rl\n").lower()
     check_for_stop(name_or_url)
     if name_or_url == '':
