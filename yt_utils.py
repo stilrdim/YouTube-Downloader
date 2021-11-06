@@ -253,6 +253,13 @@ def resolution_not_found():
     print("WARNING!!! Resolution not found!")
 
 
+def close_app(message="Thank you for using the app!\nHave a nice day!",
+              sleep_time=3):
+    print(message)
+    sleep(sleep_time)
+    exit(1)
+
+
 def finished(video_title, iterator=1):
     """ Print information about the file that just finished downloading """
     timestamp = str(datetime.datetime.now()).split(maxsplit=11)[1].split('.')[0]
