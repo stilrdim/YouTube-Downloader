@@ -7,28 +7,30 @@
 
 ### Would you like to download [A]udio or [V]ideo?
 `Inputs:`
-`A` `V`
+`A` `V` `SETUP`
 
 ### Would you like to download [O]ne or [M]ultiple files?
 `Inputs:`
-`O` `M`
+`O` `M` `SETUP`
 
 >[M] reads from a `txt file` on input if you selected `Name` on first prompt
->
+
+
 >[M] reads from a `playlist` OR `txt file` if you selected `URL` on the first prompt
 
 ### Empty input always defaults to the first choice
 
 ##
-### You can create a settings.txt file manually or use SETUP as first input
->Example settings.txt:
+### You can create a settings.txt file manually or use SETUP as any of the inputs
+>Example settings.txt
 ```
 name
 video
 one
 720p
+sub_folder
 ```
-`resolution` **is optional**
+`sub_folder` **is optional**
 
 
 # YouTube-Downloader-Python (yt_utils)
@@ -50,8 +52,12 @@ Use `download_from_url` to download a file using its URL
 
 Use `download_from_name` to download a file by searching for it through pytube
 
-`playlist/songs: list[str] / pytube.Playlist`
-  Your own playlist/songs object
+Use `check_for_stop(user_input: String)` to check if the user input was "stop" or "s", if so, closes the file 
+
+Use `check_for_setup(user_input: String)` to check if the user input was "setup", if so, begins creating a settings.txt
+
+`songs/videos/playlist: list[str] / pytube.Playlist`
+  Your own songs/videos/playlst object
 
 
 `file_extension: String`
@@ -69,7 +75,7 @@ Use `download_from_name` to download a file by searching for it through pytube
   >Default: "360p"
 
 
-`new_folder: String`
+`sub_folder: String`
   If you'd like to make a new folder, type it here in a raw string
   >Default: ""
   ```
@@ -85,6 +91,6 @@ Use `download_from_name` to download a file by searching for it through pytube
             2. Bobby Vinton - Sealed With a Kiss
    ```  
   
-`sleep_time: Int`
+`delay: Int`
   Delay between each download in seconds
   >Default: 2
