@@ -19,9 +19,8 @@ print("""
 |                                                       |
 |                                                       |
 |                                                       |
-| You can create a settings.txt file                    |
-| with each setting on a new line                       |
-| to avoid retyping them every time                     |
+| You can create a settings.txt file with each setting  |
+| on a new line to avoid retyping them every time       |
 | or use SETUP as any of the inputs                     |
 |                                                       |
 | Examples:    n      a     o   360p   sub_folder       |

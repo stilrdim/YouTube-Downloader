@@ -289,7 +289,7 @@ def create_settings(settings_file):
                    ]
 
     os.system('cls')
-    print("\nsettings.txt will be created in the script folder.\n\n"
+    print("settings.txt will be created in the script folder.\n\n"
           "Please select one of each on the next couple of questions"
           " and type in the full word\n")
 
