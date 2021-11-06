@@ -26,6 +26,7 @@ video
 one
 720p
 ```
+`resolution` **is optional**
 
 
 # YouTube-Downloader-Python (yt_utils)
