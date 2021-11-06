@@ -3,22 +3,24 @@
 
 ### Would you like to download using a [N]ame or [U]rl?
 `Inputs:`
-`N` or `U`
+`N` `U` `SETUP`
 
 ### Would you like to download [A]udio or [V]ideo?
 `Inputs:`
-`A` or `V`
+`A` `V`
 
 ### Would you like to download [O]ne or [M]ultiple files?
 `Inputs:`
-`O` or `M`
+`O` `M`
 
->[M] reads from a txt file on input, or a playlist if you selected URL on the first prompt
+>[M] reads from a `txt file` on input if you selected `Name` on first prompt
+>
+>[M] reads from a `playlist` OR `txt file` if you selected `URL` on the first prompt
 
 ### Empty input always defaults to the first choice
 
 ##
-### You can create a settings.txt file to avoid repetitive inputs
+### You can create a settings.txt file manually or use SETUP as first input
 >Example settings.txt:
 ```
 name
