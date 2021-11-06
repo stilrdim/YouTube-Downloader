@@ -1,6 +1,35 @@
 # YouTube-Downloader
-#### Download youtube playlists or lists of songs/videos using `pytube`
+###### Download youtube playlists or lists of songs/videos using `pytube`
 
+### Would you like to download using a [N]ame or [U]rl?
+`Inputs:`
+`N` or `U`
+
+### Would you like to download [A]udio or [V]ideo?
+`Inputs:`
+`A` or `V`
+
+### Would you like to download [O]ne or [M]ultiple files?
+`Inputs:`
+`O` or `M`
+
+>[M] reads from a txt file on input, or a playlist if you selected URL on the first prompt
+
+### Empty input always defaults to the first choice
+
+##
+### You can create a settings.txt file to avoid repetitive inputs
+>Example settings.txt:
+```
+name
+video
+one
+720p
+```
+`resolution` **is optional**
+
+
+# YouTube-Downloader-Python (yt_utils)
 ## Classes `Audio` and `Video` have the same methods
 
 Use `download_all` to download from your own list of items using the pytube **Search** function
