@@ -32,9 +32,11 @@ sub_folder
 2
 yes
 ```
-`sub_folder` **Creates new folder inside the `downloads` folder (in this case, new folder will be called `sub_folder`)**
-`2` **Delay (secs) when using the `Multiple` setting**
-`yes` **Will shuffle the list of songs/videos before downloading when using the `Multiple` setting**
+`sub_folder` Creates new folder inside the `downloads` folder (in this case, new folder will be called `sub_folder`)
+
+`2` Delay (secs) when using the `Multiple` setting
+
+`yes` Will shuffle the list of songs/videos before downloading when using the `Multiple` setting
 
 
 # YouTube-Downloader-Python (yt_utils)
