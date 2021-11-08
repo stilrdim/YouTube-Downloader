@@ -1,4 +1,4 @@
-from yt_utils import Audio, Video, check_for_stop, check_for_setup, SETTINGS_FILE
+from yt_utils import Audio, Video, check_for_stop, check_for_setup, SETTINGS_FILE, shuffle
 
 print("""
  ________________________________________________________
@@ -48,15 +48,26 @@ try:
     except IndexError:  # Sub folder not set, don't make one
         settings.append('')
         sub_folder = settings[4]
-    # Delay in seconds
+
     if one_or_multiple == 'm':
-        try:
+        try:  # Delay in seconds
             delay = int(settings[5])            # 6
         except IndexError:  # Delay not set (Only occurs when manually creating settings.txt)
             settings.append('2')
             delay = int(settings[5])
-    else:
+
+        try:  # Shuffle list
+            shuffle_setting = settings[6][0]
+            if shuffle_setting == 'y':
+                is_shuffled = True
+            else:
+                is_shuffled = False
+        except IndexError:  # Shuffle not set
+            is_shuffled = False
+    else:  # Not multiple selection
         delay = 2
+        is_shuffled = False
+
     print('Current settings:\n%s\n' % settings)
 
 # Settings file not found
@@ -83,19 +94,18 @@ except FileNotFoundError:
         print(one_or_multiple)
     check_for_setup(one_or_multiple)
 
-    # Default settings
+    # Default settings, only used if no "settings.txt" and no setup
     resolution = "360p"
     sub_folder = ''
     delay = 2
+    is_shuffled = False
 
 
 while True:
     user_input = input('> ')
 
-    # Exit app on "Stop" input
+    # Exit app on "Stop" or "Setup" input
     check_for_stop(user_input)
-
-    # Exit app on "Setup" input
     check_for_setup(user_input)
 
     # Only one file
@@ -122,11 +132,12 @@ while True:
         if name_or_url == 'n' and audio_or_video == 'a':  # Name, Audio
             with open(user_input, 'r+') as f:
                 songs = f.readlines()
-            Audio.download_all(songs, sub_folder=sub_folder, delay=delay)
+            Audio.download_all(songs, sub_folder=sub_folder, delay=delay, shuffle_list=is_shuffled)
         if name_or_url == 'n' and audio_or_video == 'v':  # Name, Video
             with open(user_input, 'r+') as f:
                 videos = f.readlines()
-            Video.download_all(videos, sub_folder=sub_folder, delay=delay, resolution=resolution)
+            Video.download_all(videos, sub_folder=sub_folder, delay=delay, shuffle_list=is_shuffled,
+                               resolution=resolution)
 
         # URLs
         if name_or_url == 'u' and audio_or_video == 'a':  # URL, Audio
@@ -141,7 +152,11 @@ while True:
             elif playlist_or_file == 'f' or playlist_or_file == '':
                 with open(user_input, 'r+') as f:
                     playlist = f.readlines()
+
+                if is_shuffled is True:  # Shuffle list
+                    shuffle(playlist)
                 for song_url in playlist:
+                    song_url = song_url.replace('\n', '')
                     Audio.download_from_url(song_url, sub_folder=sub_folder, delay=delay)
 
         if name_or_url == 'u' and audio_or_video == 'v':  # URL, Video

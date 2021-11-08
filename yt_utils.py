@@ -2,6 +2,7 @@ import datetime
 import os
 import atexit
 from time import sleep
+from random import shuffle
 from pytube import YouTube, Playlist, Search
 
 DW_FOLDER = os.getcwd() + r"\downloads"
@@ -48,9 +49,13 @@ class Audio:
 
     @staticmethod
     def download_all(songs, file_extension=".mp3", file_prefix=True,
-                     resolution="360p", sub_folder="", prefix=1, delay=2):
+                     resolution="360p", sub_folder="", prefix=1, delay=2,
+                     shuffle_list=False):
         """ Download all songs by searching for each """
         itag = choose_resolution(resolution, audio_only=True)
+
+        if shuffle_list is True:
+            shuffle(songs)
 
         for song in songs:
             song_name = song.replace('\n', '')
@@ -158,9 +163,13 @@ class Video:
 
     @staticmethod
     def download_all(videos, file_extension=".mp4", file_prefix=True,
-                     resolution="360p", sub_folder="", prefix=1, delay=2):
+                     resolution="360p", sub_folder="", prefix=1, delay=2,
+                     shuffle_list=False):
         """ Download all videos by searching for each """
         itag = choose_resolution(resolution)
+
+        if shuffle_list is True:
+            shuffle(videos)
 
         for video in videos:
             video_name = video.replace('\n', '')
@@ -345,9 +354,14 @@ def create_settings(settings_file):
         delay = input("This app uses delayed requests to not overload YouTube's servers.\n"  # Delay in seconds
                       "How much of a delay in seconds would you like?\n"
                       "Default: 2\n")
-        if delay == '':
+        if delay == '':  # Default to 2s
             delay = 2
         settings.append(delay)
+
+        shuffle_list_setting = input("Shuffle list before downloading?\t\t[Y]es / [N]o\n")  # Shuffle list
+        if shuffle_list_setting.lower()[0] not in ['y', 'n', '']:
+            shuffle_list_setting = 'n'
+        settings.append(shuffle_list_setting)
 
     # Write the settings down and exit the file
     with open(settings_file, 'w') as f:
