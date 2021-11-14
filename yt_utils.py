@@ -406,6 +406,5 @@ def finished(video_title, iterator=1):
 # On app close (KeyboardInterrupt, etc...)
 @atexit.register
 def goodbye():
-    os.system('cls')
-    print("Thank you for using the app!\nHave a nice day!")
+    print("\n\nThank you for using the app!\nHave a nice day!")
     sleep(2)
