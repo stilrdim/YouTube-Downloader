@@ -29,8 +29,14 @@ video
 one
 720p
 sub_folder
+2
+yes
 ```
-`sub_folder` **is optional**
+`sub_folder` Creates new folder inside the `downloads` folder (in this case, new folder will be called `sub_folder`)
+
+`2` Delay (secs) when using the `Multiple` setting
+
+`yes` Will shuffle the list of songs/videos before downloading when using the `Multiple` setting
 
 
 # YouTube-Downloader-Python (yt_utils)
@@ -94,3 +100,6 @@ Use `check_for_setup(user_input: String)` to check if the user input was "setup"
 `delay: Int`
   Delay between each download in seconds
   >Default: 2
+
+`shuffle_list: Bool`
+  Shuffle list before download (Only available in download_all)
