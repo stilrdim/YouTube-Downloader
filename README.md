@@ -1,4 +1,4 @@
-# YouTube-Downloader
+# YouTube-Downloader (main)
 ###### Download youtube playlists or lists of songs/videos using `pytube`
 
 ### Would you like to download using a [N]ame or [U]rl?
